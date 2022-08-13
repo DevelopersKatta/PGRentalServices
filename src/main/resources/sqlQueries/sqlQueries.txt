@@ -1,0 +1,28 @@
+Database name :- pgrms
+
+CREATE TABLE users (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `user_name` VARCHAR(60) NULL,
+  `user_mobile` bigint(12) NULL,
+  `user_email` VARCHAR(50) NULL,
+  `users_address` VARCHAR(150) NULL,
+  `user_city` VARCHAR(45) NULL,
+  `user_role` VARCHAR(20) NULL,
+  `user_password` VARCHAR(45) NULL,
+  PRIMARY KEY (`user_id`));
+
+
+select * from users;
+
+INSERT INTO users(user_name, user_mobile, user_email, users_address, user_city, user_role, user_password)
+ VALUES ("mahi", 9561051485, "telure123@gmail.com", "kannad sambhajinagar", "kannad", "OWNER", "Pass@123");
+
+INSERT INTO users(user_name, user_mobile, user_email, users_address, user_city, user_role, user_password)
+ VALUES ("rushi", 9108765432, "rushi@gmail.com", "dream nagar nashik", "nashik", "OWNER", "Test@123");
+ 
+ UPDATE users set user_id= 321 where user_id= 2;
+ 
+ INSERT INTO users(user_name, user_mobile, user_email, users_address, user_city, user_role, user_password) 
+ VALUES ("vaibhav", 1234567890, "vaibhav@gmail.com", "pishor", "sambhajinagar", "SEEKER", "Pass@123");
+
+select * from users;
