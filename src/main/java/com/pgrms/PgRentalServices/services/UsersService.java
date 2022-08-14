@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import com.pgrms.PgRentalServices.Entities.Users;
 import com.pgrms.PgRentalServices.repositories.UsersRepository;
 
-
-
 @Service
 @Transactional
 public class UsersService {
