@@ -1,6 +1,8 @@
 package com.pgrms.PgRentalServices.Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -34,7 +36,7 @@ public class Users {
 
 
 
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	public int getUserId() {
 		return userId;
