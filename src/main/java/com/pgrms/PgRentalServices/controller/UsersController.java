@@ -4,6 +4,7 @@ package com.pgrms.PgRentalServices.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,16 +23,19 @@ public class UsersController {
 	@Autowired
 	private UsersRepository userRepository;
 	
+	@CrossOrigin
 	@GetMapping("/users")
 	public List<Users> list(){
 		return userService.listAll();
 	}
 	
+	@CrossOrigin
 	@GetMapping("/users/{id}")
 	public Users getSingleUserById(@PathVariable("id")int id) {
 		return userService.getUserById(id);
 	}
 	
+	@CrossOrigin
 	@PostMapping("/users")
 	public String saveData(@RequestBody Users users) {
 		userRepository.save(users);

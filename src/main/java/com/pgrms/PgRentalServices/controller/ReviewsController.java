@@ -3,6 +3,7 @@ package com.pgrms.PgRentalServices.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,12 +22,14 @@ public class ReviewsController {
 	private ReviewsService service;
 
 	// RESTful API methods for Retrieval operations
+	@CrossOrigin
 	@GetMapping("/reviews")
 	public List<Reviews> list() {
 		return service.listAll();
 	}
 
 	// RESTful API method for Create operation
+	@CrossOrigin
 	@PostMapping("reviews")
 	public String saveReviews(@RequestBody Reviews rq) {
 		service.saveReviews(rq);
@@ -34,12 +37,14 @@ public class ReviewsController {
 	}
 
 	// RESTful API method for find operation
+	@CrossOrigin
 	@GetMapping("/reviews/{id}")
 	public Reviews getPgById(@PathVariable("id") int id) {
 		return service.getReviewsById(id);
 	}
 
 	// RESTful API method for Update operation
+	@CrossOrigin
 	@PutMapping("/reviews/{id}")
 	public String updateHouseById(@PathVariable("id") int id, @RequestBody Reviews rq) {
 		service.updateReviewsById(id, rq);
@@ -47,6 +52,7 @@ public class ReviewsController {
 	}
 
 	// RESTful API method for Delete operation
+	@CrossOrigin
 	@DeleteMapping("reviews/{id}")
 	public String deleteById(@PathVariable("id") int id) {
 		service.deleteReviewsById(id);
