@@ -1,11 +1,15 @@
 package com.pgrms.PgRentalServices.services;
 
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pgrms.PgRentalServices.Entities.PG_Houses;
 import com.pgrms.PgRentalServices.repositories.PG_HousesRepository;
@@ -27,10 +31,20 @@ public class PG_HousesService {
 		return repo.findAll().stream().filter(s -> s.getPg_id() == id).findFirst().get();
 	}
 
-//	method for saving the house in the database
-	public void savePGHouse(PG_Houses pg) {
-		repo.save(pg);
-	}
+////	method for saving the house in the database
+//	public void savePGHouse(PG_Houses pg, MultipartFile file) {
+//		String filename = StringUtils.cleanPath(file.getOriginalFilename());
+//		if(filename.contains("..")) {
+//			System.out.println("Not a valid file");
+//		}
+//		try {
+//			pg.setPg_photo(Base64.getEncoder().encodeToString(file.getBytes()));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		repo.save(pg);
+//	}
 
 //	method for deleting the house from database
 	public void deletePGHouseById(int id) {
@@ -49,6 +63,32 @@ public class PG_HousesService {
 		tempHouse.setPg_rent_price(pg.getPg_rent_price());
 		tempHouse.setPg_photo(pg.getPg_photo());
 		repo.save(tempHouse);
+	}
+
+	public void savePGHouse(String pg_name, String pg_address, String pg_city, String pg_description,
+			String pg_house_type, String pg_status, int pg_rent_price, MultipartFile file) {
+		PG_Houses pg = new PG_Houses();
+		String filename = StringUtils.cleanPath(file.getOriginalFilename());
+		if(filename.contains("..")) {
+			System.out.println("Not a valid file");
+		}
+		try {
+			pg.setPg_photo(Base64.getEncoder().encodeToString(file.getBytes()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		pg.setPg_name(pg_name);
+		pg.setPg_address(pg_address);
+		pg.setPg_city(pg_city);
+		pg.setPg_description(pg_description);
+		pg.setPg_house_type(pg_house_type);
+		pg.setPg_status(pg_status);
+		pg.setPg_rent_price(pg_rent_price);
+		
+		repo.save(pg);
+		
 	}
 
 // public void save(Product product) {

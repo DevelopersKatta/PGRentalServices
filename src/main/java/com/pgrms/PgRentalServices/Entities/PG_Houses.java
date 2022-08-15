@@ -16,7 +16,7 @@ public class PG_Houses {
 	private String pg_house_type;
 	private String pg_status;
 	private int pg_rent_price;
-	private String pg_photo = null;
+	private String pg_photo;
 
 	public PG_Houses() {
 	}

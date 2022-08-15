@@ -8,8 +8,6 @@ import javax.persistence.Id;
 
 @Entity
 public class Confirmed {
-
-
 	private int cfm_id;
 	private int owner_id;
 	private int seeker_id;
