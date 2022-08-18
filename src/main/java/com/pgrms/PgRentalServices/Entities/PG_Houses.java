@@ -7,7 +7,6 @@ import javax.persistence.Id;
 
 @Entity
 public class PG_Houses {
-
 	private int pg_id;
 	private String pg_name;
 	private String pg_address;
@@ -23,7 +22,6 @@ public class PG_Houses {
 
 	public PG_Houses(int pg_id, String pg_name, String pg_address, String pg_city, String pg_description,
 			String pg_house_type, String pg_status, int pg_rent_price, String pg_photo) {
-		super();
 		this.pg_id = pg_id;
 		this.pg_name = pg_name;
 		this.pg_address = pg_address;
